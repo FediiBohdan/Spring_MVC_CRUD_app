@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Update movie</title>
 </head>
 <body>
+
+    <form th:method="PATCH" th:action="@{/movies/{idMovie}(idMovie=${movie.getIdMovie()})}" th:object="${movie}">
+        <label for="name">Enter name: </label>
+        <input type="text" th:field="*{name}" id="name">
+        <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+        <br/>
+
+        <label for="genre">Enter genre: </label>
+        <input type="text" th:field="*{genre}" id="genre">
+        <div style="color:red" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}">Genre error</div>
+        <br/>
+
+        <label for="director">Enter director: </label>
+        <input type="text" th:field="*{director}" id="director">
+        <div style="color:red" th:if="${#fields.hasErrors('director')}" th:errors="*{director}">Director error</div>
+        <br/>
+
+        <label for="releaseYear">Enter release year: </label>
+        <input type="text" th:field="*{releaseYear}" id="releaseYear">
+        <div style="color:red" th:if="${#fields.hasErrors('releaseYear')}" th:errors="*{releaseYear}">Year error</div>
+        <br/>
+
+        <input type="submit" value="Update the movie">
+    </form>
 
 </body>
 </html>
